@@ -1,0 +1,37 @@
+import { useField } from 'vee-validate'
+import { toTypedSchema } from '@vee-validate/zod'
+import * as zod from 'zod'
+  
+  const validationSchema = toTypedSchema(
+    zod.object({
+      email: zod
+        .string({
+          required_error:'Campo no puede estar vacio'
+        })
+        .min(1, 'This is required')
+        .email({ 
+          message: 'Must be a valid email' 
+        }),
+      password: zod
+        .string({
+          required_error:'Campo no puede estar vacio'
+        })
+        .min(1, 'This is required')
+        .min(8, { message: 'Too short' }),
+    })
+  )
+
+  const { errorMessage, handleBlur, value, handleChange } = useField(name!, validationSchema, {
+    validateOnValueUpdate: true,
+    syncVModel: true,
+  })
+
+  type EventLinstener = (evt: Event) => void;
+  const validationListeners: Record<string,EventLinstener> = {
+    blur: (evt: Event) => handleBlur(evt, true),
+    input: (evt: Event) => handleChange(evt, !!errorMessage.value)
+  }
+
+
+  v-model='value'
+  v-on='validationListeners'
