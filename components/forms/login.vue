@@ -4,6 +4,11 @@
   import { useField, useForm,Form } from 'vee-validate'
   import { toTypedSchema } from '@vee-validate/zod'
   import * as zod from 'zod'
+  import { useAuthStore } from '@/store'
+  import { storeToRefs } from 'pinia'
+
+  const authStore = useAuthStore()
+  const { isAuthenticated } = storeToRefs(authStore)
 
   const {email, password} = reactive({
     email: {
@@ -40,7 +45,14 @@
 
   const onSubmit = handleSubmit(async values => {
 
-    console.log(values)
+    try {
+
+      const { email, password } = values
+      await authStore.login(email, password)
+
+    } catch(error) {
+      console.log(error)
+    }
 
   });
 

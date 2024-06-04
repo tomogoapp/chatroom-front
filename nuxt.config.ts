@@ -16,6 +16,9 @@ export default defineNuxtConfig({
       ]
     }
   },
+  plugins: [
+    '@/plugins/initAuth'
+  ],
   build: {
     transpile: ['vuetify'],
   },

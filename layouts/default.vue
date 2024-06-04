@@ -39,9 +39,17 @@ const appContainerHeight = ref("")
           aspect-ratio="4/3"
           cover
           src="/images/ico.png"
+          :to="/dashboard/"
         ></v-img>
       </template>
       <template v-slot:append>
+        
+        <VBtn
+          text="Test"
+          to="/dashboard"
+        >
+        </VBtn>
+
         <VBtn
           text="Log In"
           to="/account/login"
