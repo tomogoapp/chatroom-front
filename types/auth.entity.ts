@@ -1,5 +1,5 @@
 export interface AuthState {
-  user:  UserClass;
+  user:  UserClass | string;
   token: string | null;
 }
 

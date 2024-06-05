@@ -4,7 +4,7 @@ import type { AuthState } from '@/types'
 export const useAuthStore = defineStore('auth', {
 
     state:():AuthState => ({
-        user: null,
+        user: '',
         token: null
     }),
 
@@ -78,11 +78,9 @@ export const useAuthStore = defineStore('auth', {
                 })
         
                 if (response.ok) {
-                    console.log('response:',response)
-                    //this.user = await response.json()
                     return true
                 } else {
-                    console.error('Error fetching user:')
+                    console.error('Error fetching user:', response.status.toString())
                     return false
                 }
             } catch (error) {
