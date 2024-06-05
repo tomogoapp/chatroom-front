@@ -14,6 +14,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     //     }
     // }
 
+    // try{
+    //     await authStore.fetchUser()
+    //     alert('entro')
+    // }catch(error){
+    //     console.log(error)
+    //     return navigateTo('/account/login')
+    // }
+
     if( !authStore.isAuthenticated ){
         return navigateTo('/account/login')
     }else{
