@@ -2,7 +2,9 @@
 
   definePageMeta({
     title: 'ChatRoom - Log In',
-    layout: 'default'
+    name: 'account-login',
+    layout: 'default',
+    middleware: 'auth',
   })
 
   useHead({

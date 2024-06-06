@@ -13,15 +13,10 @@ export const useAuthStore = defineStore('auth', {
         initializeStore(){
 
             const tokenCookie = useCookie('token')
-            const userCookie = useCookie('user')
 
             if (tokenCookie.value) {
                 this.token = tokenCookie.value
               }
-        
-            if (userCookie.value) {
-                this.user = userCookie.value
-            }
 
         },
 
@@ -47,10 +42,10 @@ export const useAuthStore = defineStore('auth', {
 
                     // Establecer cookies utilizando useCookie
                     const tokenCookie = useCookie('token')
-                    const userCookie = useCookie('user')
+                    //const userCookie = useCookie('user')
 
                     tokenCookie.value = this.token
-                    userCookie.value = JSON.stringify(this.user)
+                    //userCookie.value = JSON.stringify(this.user)
 
                     console.log('%cLoogueado!!!','color: green;')
                     navigateTo('/dashboard')
@@ -78,6 +73,8 @@ export const useAuthStore = defineStore('auth', {
                 })
         
                 if (response.ok) {
+                    const data = await response.json()
+                    this.user = data.user
                     return true
                 } else {
                     console.error('Error fetching user:', response.status.toString())
