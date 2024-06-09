@@ -1,7 +1,7 @@
 
 <script lang="ts" setup>
   import type { textField,LoginEntity } from '@/types'
-  import { useField, useForm,Form } from 'vee-validate'
+  import { useField, useForm } from 'vee-validate'
   import { toTypedSchema } from '@vee-validate/zod'
   import * as zod from 'zod'
   import { useAuthStore } from '@/store'

@@ -6,6 +6,7 @@ export interface LoginEntity {
 export interface RegisterEntity {
     usernamer: string,
     email: string,
+    backupEmail: string,
     confirmEmail: string,
-    avatar?: string,
+    file?: string,
 }

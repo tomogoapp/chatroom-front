@@ -1,8 +1,17 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+
+  definePageMeta ({
+    name: 'account-register',
+    middleware: 'auth'
+  })
+
+</script>
 
 <template>
   <div>
-    Page: account/register
+    <FormsRegister 
+    
+    />
   </div>
 </template>
 

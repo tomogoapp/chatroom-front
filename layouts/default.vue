@@ -26,42 +26,7 @@ const appContainerHeight = ref("")
 
 <template>
   <VLayout>
-    <VAppBar
-      title='Chat Rooms'
-      ref='appBarRef'
-      fixed
-      :elevation='0'
-      class='pt-1 pb-1'
-    >
-      <template v-slot:prepend>
-        <v-img
-          :width="60"
-          aspect-ratio="4/3"
-          cover
-          src="/images/ico.png"
-          :to="/dashboard/"
-        ></v-img>
-      </template>
-      <template v-slot:append>
-        
-        <VBtn
-          text="Test"
-          to="/dashboard"
-        >
-        </VBtn>
-
-        <VBtn
-          text="Log In"
-          to="/account/login"
-        >
-        </VBtn>
-        <VBtn
-          text="Sign In"
-          to="/account/register"
-        >
-        </VBtn>
-      </template>
-    </VAppBar>
+    <CommonUserAppBar />
     <VMain>
       <slot />
     </VMain>

@@ -3,6 +3,7 @@ import type { AuthState } from '@/types'
 
 export const useAuthStore = defineStore('auth', {
 
+
     state:():AuthState => ({
         user: '',
         token: null
@@ -10,6 +11,9 @@ export const useAuthStore = defineStore('auth', {
 
     actions: {
 
+/* The `initializeStore` method in the `useAuthStore` store is responsible for initializing the store
+by checking for a token in a cookie and setting it in the store's state if it exists. Here is a
+breakdown of what the method does: */
         initializeStore(){
 
             const tokenCookie = useCookie('token')
@@ -20,6 +24,8 @@ export const useAuthStore = defineStore('auth', {
 
         },
 
+/* The `login` method in the `useAuthStore` store is responsible for handling the login functionality.
+Here is a breakdown of what the method does: */
         async login(email: string, password: string){
 
             const config = useRuntimeConfig()
@@ -57,10 +63,19 @@ export const useAuthStore = defineStore('auth', {
             }
         },
 
+/* The `register` method in the `useAuthStore` store is currently empty, meaning it does not contain
+any functionality or code. It is a placeholder method that can be used to implement registration
+functionality in the future. */
         async register (){
             
         },
 
+/**
+ * This TypeScript function fetches user data from an API endpoint and returns a boolean indicating
+ * success or failure.
+ * @returns The `fetchUser` method returns a Promise<boolean>. It returns `true` if the user is
+ * successfully fetched and `false` if there is an error during the process.
+ */
         async fetchUser(): Promise<boolean> {
             const config = useRuntimeConfig()
             const apiUrl = config.public.apiUrl
